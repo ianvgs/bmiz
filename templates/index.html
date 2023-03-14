@@ -1,0 +1,94 @@
+{{template "header.html"}}
+<div class="columns" style="height: 80vh; margin-bottom: 0; margin-left: 1rem;">
+    <aside class="column is-2 aside hero">
+        <aside class="menu">
+            <p class="menu-label">
+                Tags
+            </p>
+            <ul class="menu-list">
+                <li><span style="display: block;" class="tag is-primary is-medium block">Dashboard</span></li>
+                <li><span style=" display: block;" class="tag is-link is-medium ">Customers</span></li>
+                <li><span style="display: block;" class="tag is-light is-danger is-medium ">Authentication</span></li>
+                <li><span style="display: block;" class="tag is-dark is-medium ">Payments</span></li>
+                <li><span style="display: block;" class="tag is-success is-medium ">Transfers</span></li>
+                <li><span style="display: block;" class="tag is-warning is-medium ">Balance</span></li>
+                <li><span class="tag is-medium ">Question</span></li>
+            </ul>
+        </aside>
+
+        <div class="main">
+            <a href="#" class="item active block"><span class="icon"><i class="fa fa-inbox block"></i></span><span
+                    class="name">Inbox</span></a>
+            <a href="#" class="item"><span class="icon"><i class="fa fa-star"></i></span><span
+                    class="name">Starred</span></a>
+            <a href="#" class="item"><span class="icon"><i class="fa fa-envelope-o"></i></span><span class="name">Sent
+                    Mail</span></a>
+            <a href="#" class="item"><span class="icon"><i class="fa fa-folder-o"></i></span><span
+                    class="name">Folders</span></a>
+        </div>
+        <div class="compose has-text-centered">
+            <a class="button is-danger is-block is-bold">
+                <span class="compose">Compose</span>
+            </a>
+        </div>
+
+    </aside>
+    <div class="column is-8 messages hero ">
+        <div class=" box content">
+            {{range $index, $element := .posts}}
+            <article class="post">
+                <article class="post">
+                    <h4>{{$element.Title}}</h4>
+                    <div class="media">
+                        <div class="media-left">
+                            <p class="image is-32x32">
+                                <img src="http://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
+                                    <span class="tag">Question</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media-right">
+                            <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                        </div>
+                    </div>
+                </article>
+                {{end}}
+                <article class="post">
+                    <!--    {{.posts}} -->
+                    <h4>Bulma: How do you center a button in a box?</h4>
+                    <div class="media">
+                        <div class="media-left">
+                            <p class="image is-32x32">
+                                <img src="http://bulma.io/images/placeholders/128x128.png">
+                            </p>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
+                                    <span class="tag">Question</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="media-right">
+                            <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                        </div>
+                    </div>
+                </article>
+        </div>
+    </div>
+    <div class="column is-2 message hero  ">
+    </div>
+</div>
+
+
+
+
+
+{{template "footer.html"}}
