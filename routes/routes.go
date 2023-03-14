@@ -19,4 +19,5 @@ func HandleRequests() {
 
 func publicRoutes(g *gin.RouterGroup) {
 	g.GET("/", controllers.IndexHandler())
+	g.GET("/home", controllers.HomeHandler())
 }
