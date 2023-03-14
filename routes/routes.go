@@ -14,7 +14,7 @@ func HandleRequests() {
 
 	public := r.Group("/")
 	publicRoutes(public)
-	r.Run()
+	r.Run(":80")
 }
 
 func publicRoutes(g *gin.RouterGroup) {
