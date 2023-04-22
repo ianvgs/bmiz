@@ -11,15 +11,26 @@ import (
 
 func HandleRequests() {
 
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
-	if err != nil {
-		log.Fatal("Erro ao carregar path")
-	}
-
 	r := gin.Default()
 
-	r.Static("/assets", dir+"/assets")
-	r.LoadHTMLGlob(dir + "/templates/*.html")
+	if os.Getenv("GO_ENV") == "production" {
+
+		// Get the absolute path to the executable
+		executablePath, err := os.Executable()
+		if err != nil {
+			log.Fatalf("Error getting executable path: %s", err)
+		}
+		executableDir := filepath.Dir(executablePath)
+		r.Static("/assets", filepath.Join(executableDir, "assets"))
+		r.LoadHTMLGlob(filepath.Join(executableDir, "templates/*.html"))
+		public := r.Group("/")
+		publicRoutes(public)
+		r.Run(":8080")
+		return
+	}
+
+	r.Static("/assets", "./assets")
+	r.LoadHTMLGlob("templates/*.html")
 
 	public := r.Group("/")
 	publicRoutes(public)
